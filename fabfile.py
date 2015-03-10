@@ -9,7 +9,7 @@ def download(url="http://www.songspk.name/indian-mp3-songs/badlapur-2015-mp3-son
     nam = extract(soup)
     titles = title(soup)
     count = 1
-    local("mkdir /home/zeroonehacker/"+titles)
+    local("mkdir ./"+titles)
     links = soup.find_all("div",{"class":"download"})
     for flevel in links:
         s =flevel.find_all("a")
@@ -17,5 +17,5 @@ def download(url="http://www.songspk.name/indian-mp3-songs/badlapur-2015-mp3-son
             url = slevel.get("href")
             print "Downloading file.........."
             local("wget "+"%s" % url)
-            local("mv ./song*"+" /home/zeroonehacker/"+titles+"/"+nam[count-1]+".mp3")
+            local("mv ./song*"+" /"+titles+"/"+nam[count-1]+".mp3")
             count +=1
